@@ -21,9 +21,9 @@ ___
 3. Аннотации @Bean + @Primary для выбора приоритетного экземпляра
 
 Аннотации:
-* @Bean
-* @Configuration
-* @Primary
+* `@Bean`
+* `@Configuration`
+* `@Primary`
 
 ### S1Example2
 Автоматическое создание бинов:
@@ -31,24 +31,54 @@ ___
 2. Для создания зависимости используем @Autowired
 
 Аннотации:
-* @Component
-* @ComponentScan(basePackages = "org.example.domain")
-* @Qualifier("nameBean") - указание нужного bean в конструкторе
-* @Autowired
+* `@Component`
+* `@ComponentScan(basePackages = "org.example.domain")`
+* `@Qualifier("nameBean") - указание нужного bean в конструкторе`
+* `@Autowired`
 
 ### S1Example3
 Автоматическое создание бинов с использованием интерфейса.
 
 Аннотации:
-* @Lazy - не создает bean без необходимости (ленивая загрузка)
+* `@Lazy` - не создает bean без необходимости (ленивая загрузка)
 
 ### S1Example4
 Задание области видимости бинов, использование @Scope
 
 Аннотации:
-* @Scope(BeanDefinition.SCOPE_PROTOTYPE)
+* `@Scope(BeanDefinition.SCOPE_PROTOTYPE)`
 
 ___
 
+### Seminar 2
+[spring initializr](https://start.spring.io/)
 
+### S2Example1
+Зависимости: Spring Web
 
+Создание простого контроллера.
+
+Аннотации:
+* `@RequestMapping("/path")`
+
+### S2Example2
+Зависимости: Spring Web
+
+Создание простого REST контроллера.
+
+Аннотации:
+* `@RestController`
+
+### S2Example3
+
+Зависимости: Spring Web и Thymeleaf
+
+Использование @Scope. Программа запрашивает пароль и считает количество регистраций пользователя.
+
+username: natalie
+password: password
+
+Аннотации (@Component +):
+* `@RequestScope`
+* `@SessionScope`
+* `@ApplicationScope`
