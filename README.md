@@ -173,3 +173,106 @@ http://localhost:8080/products
 * `@AllArgsConstructor` (Lombok)
 
 ---
+
+### Seminar 4
+
+[spring initializr](https://start.spring.io/)
+
+### S4Example1
+
+Зависимости:
+
+* Spring Web
+* H2 Database
+* Spring Data JDBC
+* Lombok
+
+Приложение для работы с аккаунтами и перевода денег между ними.
+
+1. (GET) Получение списка всех аккаунтов
+
+   http://localhost:8080/accounts
+
+2. (GET) Получение определенного аккаунта по имени
+
+   http://localhost:8080/accounts?name=Jane%20Down
+
+3. (POST) Перевод средств (транзакция)
+
+   http://localhost:8080/transfer
+
+         {
+         "senderAccountId": 1,
+         "receiverAccountId": 2,
+         "amount": 100
+         }
+
+Аннотации:
+
+* `@Id`
+* `@Query("SELECT ...")`
+* `@Modifying`
+* `@Transactional`
+* `@RequestParam(required = false)`
+
+### S4Example2
+
+Зависимости:
+
+* Spring Web
+* H2 Database
+* Spring Data JPA
+* Lombok
+
+Приложение для работы с книгами и БД.
+
+Получение списка всех книг - http://localhost:8080/books
+
+Аннотации:
+
+* `@Entity`
+* `@Table(name = "name")`
+* `@GeneratedValue(strategy = GenerationType.IDENTITY)`
+* `@Column(name = "name", nullable = false)`
+* `@Repository`
+
+### S4Example3
+
+Зависимости:
+
+* Spring Web
+* H2 Database
+* Spring Data JPA
+* Lombok
+
+Приложение для работы со студентами и курсами. Сущности студента и курса связаны
+между собой в БД по связи ManyToMany.
+
+* (POST) http://localhost:8080/students - добавление студента
+
+      {
+       "name": "Студент1"
+      }
+
+* (POST) http://localhost:8080/courses - добавление курса
+
+      {
+       "title": "Курс 1"
+      }
+
+* (GET) http://localhost:8080/students - получение списка студентов
+
+* (GET) http://localhost:8080/courses - получение списка курсов
+* (POST) http://localhost:8080/students/1/courses/1 - запись студента с id=1 на курс с id=1
+
+Аннотации:
+
+* `@ManyToMany(mappedBy = "courses")`
+* `@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)`
+* `@JoinTable(name = "student_courses",
+  joinColumns = @JoinColumn(name = "student_id"),
+  inverseJoinColumns = @JoinColumn(name = "course_id"))`
+
+[DOCS: Package jakarta.persistence (Jakarta EE Platform API v9.0.0)](https://jakarta.ee/specifications/platform/9/apidocs/jakarta/persistence/package-summary)
+
+---
